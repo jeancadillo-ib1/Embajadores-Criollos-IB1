@@ -1,0 +1,480 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Campaña Embajadores Criollos - IB1 (v2)</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --azul-primario: #002060;
+            --azul-oscuro: #09295a;
+            --rojo-peru: #d91e18;
+            --gris-fondo: #f4f6f9;
+            --blanco: #ffffff;
+            --texto-oscuro: #333333;
+            --dorado: #ffdd67;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Montserrat', sans-serif;
+        }
+
+        body {
+            background-color: var(--gris-fondo);
+            color: var(--texto-oscuro);
+            line-height: 1.6;
+        }
+
+        /* Línea superior con los colores patrios */
+        .linea-patria {
+            height: 6px;
+            background: linear-gradient(90deg, var(--rojo-peru) 33%, var(--blanco) 33%, var(--blanco) 66%, var(--rojo-peru) 66%);
+        }
+
+        /* Encabezado / Hero Section */
+        header {
+            background: linear-gradient(135deg, var(--blanco) 60%, #e9efff 100%);
+            padding: 40px 20px 30px 20px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .logo-ib1 {
+            font-weight: 800;
+            font-size: 24px;
+            color: var(--azul-primario);
+            margin-bottom: 20px;
+            display: inline-block;
+            border: 2px solid var(--azul-primario);
+            padding: 5px 15px;
+            border-radius: 4px;
+        }
+
+        .logo-ib1 span {
+            background-color: var(--azul-primario);
+            color: white;
+            padding: 2px 6px;
+            margin-right: 5px;
+            border-radius: 2px;
+        }
+
+        .hero-title {
+            font-size: 42px;
+            font-weight: 800;
+            color: var(--azul-primario);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 10px;
+        }
+
+        .hero-subtitle {
+            font-size: 18px;
+            color: #555;
+            max-width: 600px;
+            margin: 0 auto 25px auto;
+            font-weight: 600;
+        }
+
+        .slogan-box {
+            background-color: var(--blanco);
+            border-left: 5px solid var(--rojo-peru);
+            padding: 15px;
+            max-width: 550px;
+            margin: 0 auto;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+            border-radius: 4px;
+        }
+
+        .slogan-box p {
+            font-size: 14px;
+            font-weight: 600;
+        }
+
+        .slogan-box strong {
+            color: var(--rojo-peru);
+        }
+
+        /* Contenedor Principal */
+        .container {
+            max-width: 1100px;
+            margin: 30px auto;
+            padding: 0 20px;
+        }
+
+        /* SECCIÓN DE CONTADORES (DASHBOARD) */
+        .dashboard-widgets {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 25px;
+            margin-bottom: 40px;
+        }
+
+        .widget-box {
+            background-color: var(--blanco);
+            border-radius: 10px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.06);
+            padding: 25px;
+            text-align: center;
+            border-bottom: 4px solid var(--azul-primario);
+        }
+
+        .widget-box.accent-border {
+            border-bottom: 4px solid var(--rojo-peru);
+        }
+
+        .widget-title {
+            font-size: 14px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: #666;
+            margin-bottom: 15px;
+        }
+
+        /* Estilos del Countdown */
+        .countdown-container {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+        }
+
+        .countdown-item {
+            background-color: var(--gris-fondo);
+            padding: 10px 15px;
+            border-radius: 6px;
+            min-width: 70px;
+        }
+
+        .countdown-number {
+            font-size: 28px;
+            font-weight: 800;
+            color: var(--azul-primario);
+            display: block;
+            line-height: 1.2;
+        }
+
+        .countdown-label {
+            font-size: 11px;
+            color: #777;
+            text-transform: uppercase;
+            font-weight: 600;
+        }
+
+        /* Estilos del Contador de Cuentas */
+        .cuenta-counter-wrapper {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .cuenta-numero {
+            font-size: 46px;
+            font-weight: 800;
+            color: var(--rojo-peru);
+            line-height: 1;
+            margin-bottom: 5px;
+        }
+
+        .cuenta-meta-texto {
+            font-size: 13px;
+            font-weight: 600;
+            color: #555;
+            margin-bottom: 12px;
+        }
+
+        /* Barra de Progreso */
+        .progress-container {
+            width: 100%;
+            background-color: #e1e8ed;
+            border-radius: 10px;
+            height: 12px;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .progress-bar {
+            background: linear-gradient(90deg, var(--rojo-peru), #ff4d4d);
+            height: 100%;
+            border-radius: 10px;
+            transition: width 0.5s ease-in-out;
+        }
+
+        /* Grid de Información de Campaña */
+        .info-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 25px;
+            margin-bottom: 40px;
+        }
+
+        .card {
+            background-color: var(--blanco);
+            border-radius: 8px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+            overflow: hidden;
+        }
+
+        .card-header {
+            background-color: var(--azul-primario);
+            color: var(--blanco);
+            padding: 15px 20px;
+            font-weight: 700;
+            font-size: 16px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .card-header::after {
+            content: '🇵🇪';
+        }
+
+        .card-body {
+            padding: 20px;
+        }
+
+        .card-body ul {
+            list-style: none;
+        }
+
+        .card-body ul li {
+            margin-bottom: 12px;
+            position: relative;
+            padding-left: 25px;
+        }
+
+        .card-body ul li::before {
+            content: '✓';
+            color: var(--rojo-peru);
+            font-weight: bold;
+            position: absolute;
+            left: 0;
+        }
+
+        /* Meta Colectiva Destacada */
+        .meta-colectiva {
+            background: linear-gradient(135deg, var(--azul-oscuro) 0%, var(--azul-primario) 100%);
+            color: var(--blanco);
+            border-radius: 8px;
+            padding: 25px;
+            margin-bottom: 40px;
+            text-align: center;
+            box-shadow: 0 6px 20px rgba(0,32,96,0.2);
+        }
+
+        .meta-colectiva h3 {
+            font-size: 22px;
+            margin-bottom: 10px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .meta-colectiva .premio-grande {
+            font-size: 26px;
+            font-weight: 800;
+            color: var(--dorado);
+            margin-top: 10px;
+            display: block;
+        }
+
+        /* Sección del Formulario de Registro */
+        .section-form {
+            background-color: var(--blanco);
+            border-radius: 12px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+            padding: 40px 30px;
+            border-top: 5px solid var(--rojo-peru);
+        }
+
+        .form-title {
+            color: var(--azul-primario);
+            font-size: 28px;
+            font-weight: 700;
+            margin-bottom: 10px;
+            text-align: center;
+        }
+
+        .form-subtitle {
+            text-align: center;
+            color: #666;
+            margin-bottom: 30px;
+            font-size: 15px;
+        }
+
+        /* ======================================================== */
+        /* CAMBIO AQUÍ: Estilo para centrar y adaptar el iframe    */
+        /* ======================================================== */
+        .section-form iframe {
+            display: block;
+            margin: 0 auto;    /* Centra el formulario horizontalmente */
+            max-width: 100%;   /* Evita que se desborde en celulares */
+            border: none;
+        }
+        /* ======================================================== */
+
+        /* Footer */
+        footer {
+            text-align: center;
+            padding: 30px 20px;
+            color: #888;
+            font-size: 13px;
+            margin-top: 60px;
+            border-top: 1px solid #e1e8ed;
+        }
+
+        /* Adaptabilidad móvil */
+        @media (max-width: 768px) {
+            .hero-title { font-size: 32px; }
+            .section-form { padding: 25px 15px; }
+            .dashboard-widgets { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="linea-patria"></div>
+
+    <header>
+        <div class="logo-ib1"><span>IB1</span> INVESTMENT BUSINESS ONE</div>
+        <h1 class="hero-title">Embajadores Criollos</h1>
+        <p class="hero-subtitle">Campaña de Incentivos por referidos de colaboradores internos</p>
+        
+        <div class="slogan-box">
+            <p>❤️ <strong>Embajador Criollo de corazón:</strong> quien trae confianza, también trae celebración.</p>
+        </div>
+    </header>
+
+    <div class="container">
+
+        <section class="dashboard-widgets">
+            
+            <div class="widget-box">
+                <h3 class="widget-title">⏱️ TIEMPO RESTANTE DE CAMPAÑA</h3>
+                <div class="countdown-container" id="countdown-wrapper">
+                    <div class="countdown-item">
+                        <span class="countdown-number" id="dias">00</span>
+                        <span class="countdown-label">Días</span>
+                    </div>
+                    <div class="countdown-item">
+                        <span class="countdown-number" id="horas">00</span>
+                        <span class="countdown-label">Hrs</span>
+                    </div>
+                    <div class="countdown-item">
+                        <span class="countdown-number" id="minutos">00</span>
+                        <span class="countdown-label">Min</span>
+                    </div>
+                    <div class="countdown-item">
+                        <span class="countdown-number" id="segundos">00</span>
+                        <span class="countdown-label">Seg</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="widget-box accent-border">
+                <h3 class="widget-title">📊 PROGRESO COLECTIVO</h3>
+                <div class="cuenta-counter-wrapper">
+                    <div class="cuenta-numero">0</div> 
+                    <div class="cuenta-meta-texto">Cuentas cerradas de la meta de 25</div>
+                    
+                    <div class="progress-container">
+                        <div class="progress-bar" id="barra-progreso"></div>
+                    </div>
+                </div>
+            </div>
+
+        </section>
+
+        <div class="info-grid">
+            
+            <div class="card">
+                <div class="card-header">1. Vigencia y Participación</div>
+                <div class="card-body">
+                    <ul>
+                        <li><strong>Inicio:</strong> 18 de junio de 2026</li>
+                        <li><strong>Cierre:</strong> 26 de julio de 2026</li>
+                        <li><strong>Participan:</strong> Colaboradores internos y externos autorizados de IB1.</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="card">
+                <div class="card-header">2. Premios por Cuentas Cerradas</div>
+                <div class="card-body">
+                    <ul>
+                        <li><strong>1 Cuenta válida:</strong> 1 Entrada al cine Cineplanet.</li>
+                        <li><strong>Cada 2 Cuentas:</strong> +1 Combo de cancha y bebida.</li>
+                        <li><strong>Top Especiales:</strong> Gift Card Tottus de S/ 200 (Mayor cantidad de cuentas / Mayor capital).</li>
+                    </ul>
+                </div>
+            </div>
+
+        </div>
+
+        <div class="meta-colectiva">
+            <h3>🔥 ¡Meta Colectiva de la Oficina! 🔥</h3>
+            <p>Si logramos registrar un mínimo de <strong>25 clientes nuevos válidos</strong> entre todo el equipo...</p>
+            <span class="premio-grande">¡GRAN PARRILLADA PARA TODA LA OFICINA! 🥩🔥</span>
+        </div>
+
+        <section class="section-form">
+            <h2 class="form-title">Registra tu Referido Aquí</h2>
+            <p class="form-subtitle">Completa los datos de tu prospecto. Recuerda que el canal único asegura tu prioridad de registro.</p>
+            
+            <iframe src="https://docs.google.com/forms/d/e/1FAIpQLSdq-Bedj-foomfbh0gIGQhGiru29O7rkv6JSkqc1j01F6Gj5g/viewform?embedded=true" width="640" height="1821" frameborder="0" marginheight="0" marginwidth="0">Cargando…</iframe>
+        </section>
+
+    </div>
+
+    <footer>
+        <p>© 2026 Investment Business One (IB1). Todos los derechos reservados.</p>
+        <p style="margin-top: 5px; font-size: 11px;">Sujeto a validación interna, elegibilidad y criterios de compliance.</p>
+    </footer>
+
+    <script>
+        // 1. LÓGICA DE LA CUENTA REGRESIVA (Cierre: 26 de Julio de 2026)
+        const fechaCierre = new Date("July 26, 2026 23:59:59").getTime();
+
+        const countdownFunction = setInterval(function() {
+            const ahora = new Date().getTime();
+            const distancia = fechaCierre - ahora;
+
+            // Cálculos de tiempo para días, horas, minutos y segundos
+            const dias = Math.floor(distancia / (1000 * 60 * 60 * 24));
+            const horas = Math.floor((distancia % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const minutos = Math.floor((distancia % (1000 * 60 * 60)) / (1000 * 60));
+            const segundos = Math.floor((distancia % (1000 * 60)) / 1000);
+
+            // Inyectar los valores en el HTML
+            document.getElementById("dias").innerHTML = dias < 10 ? "0" + dias : dias;
+            document.getElementById("horas").innerHTML = horas < 10 ? "0" + horas : horas;
+            document.getElementById("minutos").innerHTML = minutos < 10 ? "0" + minutos : minutos;
+            document.getElementById("segundos").innerHTML = segundos < 10 ? "0" + segundos : segundos;
+
+            // Si la cuenta regresiva termina
+            if (distancia < 0) {
+                clearInterval(countdownFunction);
+                document.getElementById("countdown-wrapper").innerHTML = "<b style='color: var(--rojo-peru); font-size: 16px;'>¡LA CAMPAÑA HA FINALIZADO! 🇵🇪</b>";
+            }
+        }, 1000);
+
+        // 2. LÓGICA AUTOMÁTICA PARA LA BARRA DE PROGRESO DE CUENTAS
+        window.addEventListener('DOMContentLoaded', (event) => {
+            const numeroCuentasActuales = parseInt(document.querySelector('.cuenta-numero').innerText);
+            const metaCuentas = 25;
+            
+            // Calcular porcentaje (máximo 100%)
+            let porcentaje = (numeroCuentasActuales / metaCuentas) * 100;
+            if (porcentaje > 100) porcentaje = 100;
+            if (porcentaje < 0) porcentaje = 0;
+            
+            // Asignar el ancho dinámicamente a la barra
+            document.getElementById('barra-progreso').style.width = porcentaje + '%';
+        });
+    </script>
+</body>
+</html>
